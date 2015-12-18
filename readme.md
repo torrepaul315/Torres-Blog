@@ -8,11 +8,11 @@ You and a partner will build a Full Stack app that allows users to CRUD blog pos
 Before you rush in, scan this whole document. Soak it in. Take your time.
 
 <hr>
-# Think Ahead
+# Think Things Through Thoroughly
 
-* These instructions leave a lot of room for interpretation, and may not list exactly everything you need to do to build this CRUD app.
+These instructions leave a lot of room for interpretation, and may not list exactly everything you need to do to build this CRUD app.
 
-* Thoroughly think through what success looks like for each phase of this project before diving in.
+Be smart, be pragmatic, be excellent to each other.
 
 <hr>
 # gBlog Relationships
