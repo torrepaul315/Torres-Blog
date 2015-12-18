@@ -1,4 +1,4 @@
-# gBlog
+# Mini-Project: gBlog
 
 You and a partner will build a Full Stack app that allows users to CRUD blog posts.
 
@@ -8,15 +8,24 @@ You and a partner will build a Full Stack app that allows users to CRUD blog pos
 Before you rush in, scan this whole document. Soak it in. Take your time.
 
 <hr>
-# Relationships
+# Think Ahead
 
-A website has many blog posts.
+* These instructions leave a lot of room for interpretation, and may not list exactly everything you need to do to build this CRUD app.
 
-A blog post has a Title (Required), Body (Required), Author Name (Required), and Creation time (Required).
+* Thoroughly think through what success looks like for each phase of this project before diving in.
 
-A blog post can have many comments.
+<hr>
+# gBlog Relationships
 
-A comment has a Body (Required), and Author Name (Required) and Creation time (Required).
+gBlog consists of the following relationships:
+
+* A website has many blog posts.
+
+* A blog post has a Title (Required), Body (Required), Author Name (Required), and Creation time (Required).
+
+* A blog post can have many comments.
+
+* A comment has a Body (Required), and Author Name (Required) and Creation time (Required).
 
 > Do not worry about authentication and authorization right now. Auth is a stretch goal. Get your blog post CRUD working and UI created FIRST.
 
@@ -33,11 +42,13 @@ Work with your partner to create an entity relationship diagram. Do not move on 
 
 * The other team member should create a new repo on github and prepare it for the initial check in.
 
+* Check in your code
+
 ## 3. Create the Database and Tables
 
 * Work together to create the database and tables using the entity relationship diagram you drew as a reference.
 
-* You may use your preferred method for creating the database and tables (psql with SQL, pg or knex migrations).
+* You may use your preferred method for creating the database and tables (psql, pg or knex migrations).
 
 * Check in your code
 
@@ -99,11 +110,15 @@ Work with your partner to create an entity relationship diagram. Do not move on 
 
  * A button to submit the creation/edit of the blog post
 
+Take pictures of your mockups and check them into your repo.
+
 ## 7. Front-End
 
 * NOTE: Your api should only be returning JSON, so you will need to make ajax requests to get the page content.
 
 * Use bootstrap or another style framework of your choice. Plan ahead and use a grid system for your layout.
+
+* Use gulp to automate your build tasks.
 
 * As a team, focus on creating one page at a time, one team member should focus on layout/styles and the other team member should focus on ajax requests/DOM manipulation.
 
@@ -113,8 +128,9 @@ Work with your partner to create an entity relationship diagram. Do not move on 
 
 * Commit your code often.
 
-<hr>
-# Stretch: User Authentication  
+# Stretch
+
+## 1. User Authentication  
 
 * Re-factor your application to use user authentication.
 
@@ -127,3 +143,17 @@ Work with your partner to create an entity relationship diagram. Do not move on 
 * Restrict comment deletion to the author of the post and the comment author.
 
 * You may use passport local strategy or role your own local strategy.
+
+## 2. Use a postgres DB hosted on heroku
+
+* Familiarize yourself with [how heroku works](https://devcenter.heroku.com/articles/how-heroku-works)
+
+* Follow the guide [here](https://devcenter.heroku.com/articles/heroku-postgresql) to create a DB on heroku.
+
+* Update your DB connection string to point to the heroku DB.
+
+## 3. Deploy to Heroku
+
+* Follow [this](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) guide to familiarize yourself with the heroku toolbelt.
+
+* Deploy your site to heroku.
