@@ -176,7 +176,7 @@ Take pictures of your mockups and check them into your repo.
 
 * Follow the guide [here](https://devcenter.heroku.com/articles/heroku-postgresql) to create a DB on heroku.
 
-* Update your DB connection string to point to the heroku DB.
+* Update your DB environment variable connection string to point to the heroku DB.
 
 * Run knex migrations or SQL files against the heroku DB to create the database schema.
 
@@ -189,6 +189,8 @@ Take pictures of your mockups and check them into your repo.
 ```js
 web: node app.js
 ```
+
+* You'll need to set your environment variables (cookie secret, DB connection string) on heroku. More on that [here](https://devcenter.heroku.com/articles/config-vars).
 
 * Deploy your site to heroku.
 
