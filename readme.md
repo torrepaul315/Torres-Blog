@@ -12,7 +12,7 @@ Before you rush in, scan this whole document. Soak it in. Take your time.
 <hr>
 # Think Things Through Thoroughly
 
-These instructions leave a lot of room for interpretation, and may not list exactly everything you need to do to build this CRUD app.
+These instructions provide a general outline and leave a lot of room for interpretation. They may not list exactly everything you need to do to build this CRUD app.
 
 Be smart, be pragmatic, be excellent to each other.
 
@@ -183,6 +183,12 @@ Take pictures of your mockups and check them into your repo.
 ## 3. Deploy to Heroku
 
 * Follow [this](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) guide to familiarize yourself with the heroku toolbelt.
+
+* Be sure to create a [Procfile](https://devcenter.heroku.com/articles/procfile) in your app directory so heroku knows how to start your app
+
+```js
+web: node app.js
+```
 
 * Deploy your site to heroku.
 
