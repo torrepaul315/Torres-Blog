@@ -178,6 +178,8 @@ Take pictures of your mockups and check them into your repo.
 
 * Update your DB connection string to point to the heroku DB.
 
+* Run knex migrations or SQL files against the heroku DB to create the database schema.
+
 ## 3. Deploy to Heroku
 
 * Follow [this](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) guide to familiarize yourself with the heroku toolbelt.
