@@ -1,4 +1,6 @@
-# Mini-Project: gBlog
+# gBlog
+
+![gBlog](gBlog.png)
 
 You and a partner will build a Full Stack app that allows users to CRUD blog posts.
 
@@ -124,7 +126,7 @@ Take pictures of your mockups and check them into your repo.
 
 * NOTE: Your api should only be returning JSON, so you will need to make ajax requests to get the blog contents.
 
-* NOTE: For now, you can put your HTML/CSS/JS files in the `public` folder in your app directory. Use the [express static middleware](http://expressjs.com/en/api.html#express.static) to serve up the folder (This is enabled by default when using the express generator). This will suffice for now, but the last stretch goal is to deploy your front end to firebase.
+* NOTE: For now, you can put your HTML/CSS/JS files in the `public` folder in your app directory. Use the [express static middleware](http://expressjs.com/en/api.html#express.static) to serve up the folder (This is enabled by default when using the express generator).
 
 * Use bootstrap or another style framework of your choice. Plan ahead and use a grid system for your layout.
 
@@ -142,11 +144,15 @@ Take pictures of your mockups and check them into your repo.
 
 ## 1. User Authentication  
 
+> Remember that your api should only return json and should not perform any redirects. You can still create a session or set a cookie on the request and use the authentication concepts you have learned in class.
+
+> Token-based authentication _can_ be used instead of cookies. Read up on it [here](http://code.tutsplus.com/tutorials/token-based-authentication-with-angularjs-nodejs--cms-22543) to see if you're up for the challenge. Also take a look at the passport [jwt strategy](https://github.com/themikenicholson/passport-jwt).
+
 * Re-factor your application to use user authentication.
 
 * Create a users table to store your users.
 
-* Change the author_name columns on the blog posts table and blog comments table to author_id and add a relationship to your users table.
+* Change the author_name columns on the blog posts table and blog comments table to author_id and add a relationship to the users table.
 
 * Restrict blog update/deletion to the author that created the blog post.
 
@@ -170,12 +176,30 @@ Take pictures of your mockups and check them into your repo.
 
 ## 4. Deploy to firebase
 
-* At this point your DB and express app are hosted on heroku (or some other similar service)
+* At this point your DB and express app are hosted together on heroku
 
-* Express is capable of serving static files, but static deployment services like firebase specialize in static content.
+* Express is capable of serving static files, but static deployment services like firebase specialize in static content. An opinion about that [here](https://divshot.com/blog/hosting/dont-host-static-sites-on-heroku/);
 
-* Deploy the public folder of your application to firebase using the firebase cli tools.
+* Create a separate github repo for your front end project.
+
+* Check in your front end code.
+
+* Update your public javascript files to make API requests to the heroku server. You will need to enable CORS in express for your firebase domain. For security, only enable cors for https://yourappname.firebaseapp.com NOT for *
+
+* Check in your code
+
+* Deploy your static site to firebase using the firebase cli tools.
 
 * Remove the public folder from your heroku instance so that only the API is accessible.
 
-* Update your public javascript files to make API requests to the heroku server. You will need to enable CORS in express for your firebase domain.
+## 5. Drink a beer (or other appropriate beverage)
+
+* YOU DID IT
+
+* YOU'RE A FULL STACK DEVELOPER
+
+* YOU HAVE CODE RUNNING ON 3 SEPARATE SERVERS ALL COMMUNICATING WITH EACH OTHER AND ACTUALLY WORKING
+
+* YOU ROCK!!!!!
+
+![GOOD JOB](https://media.giphy.com/media/xTiTnnLkYTDWSOWSHK/giphy.gif)
