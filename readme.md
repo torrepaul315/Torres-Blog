@@ -44,6 +44,8 @@ Work with your partner to create an entity relationship diagram. Do not move on 
 
 * Check in your code
 
+* Take pictures of your entity relationship diagrams and check them in.
+
 ## 3. Create the Database and Tables
 
 * Work together to create the database and tables using the entity relationship diagram you drew as a reference.
@@ -104,17 +106,25 @@ Work with your partner to create an entity relationship diagram. Do not move on 
 
  * A link to add a comment.
 
-* Create/Edit Page:
+* Create Page:
 
  * Display a form with input boxes for Title, Author, Body
 
- * A button to submit the creation/edit of the blog post
+ * A button to submit the creation of the blog post
+
+* Edit Page:
+
+  * Display a form with input boxes for Title, Author, Body
+
+  * A button to submit the edit of the blog post
 
 Take pictures of your mockups and check them into your repo.
 
 ## 7. Front-End
 
-* NOTE: Your api should only be returning JSON, so you will need to make ajax requests to get the page content.
+* NOTE: Your api should only be returning JSON, so you will need to make ajax requests to get the blog contents.
+
+* NOTE: For now, you can put your HTML/CSS/JS files in the `public` folder in your app directory. Use the [express static middleware](http://expressjs.com/en/api.html#express.static) to serve up the folder (This is enabled by default when using the express generator). This will suffice for now, but the last stretch goal is to deploy your front end to firebase.
 
 * Use bootstrap or another style framework of your choice. Plan ahead and use a grid system for your layout.
 
@@ -157,3 +167,15 @@ Take pictures of your mockups and check them into your repo.
 * Follow [this](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) guide to familiarize yourself with the heroku toolbelt.
 
 * Deploy your site to heroku.
+
+## 4. Deploy to firebase
+
+* At this point your DB and express app are hosted on heroku (or some other similar service)
+
+* Express is capable of serving static files, but static deployment services like firebase specialize in static content.
+
+* Deploy the public folder of your application to firebase using the firebase cli tools.
+
+* Remove the public folder from your heroku instance so that only the API is accessible.
+
+* Update your public javascript files to make API requests to the heroku server. You will need to enable CORS in express for your firebase domain.
