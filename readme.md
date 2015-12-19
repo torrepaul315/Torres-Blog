@@ -100,25 +100,35 @@ Work with your partner to create an entity relationship diagram. Do not move on 
 
  * Display a single blog post. Should show Title, Author, Body and creation time.
 
- * Display all comments for the given blog post. Next to each comment, display a link to delete the comment.
-
  * A link to edit the blog post.
 
  * A link to delete the blog post.
 
- * A link to add a comment.
+ * Below the blog post, display a form that will allow a user to add a comment.
 
-* Create Page:
+ * Below the comment form, display all comments for the given blog post.
+
+ * Next to each comment, display a link to delete the comment.
+
+ * Next to each comment, display a link to edit the comment.
+
+* Create Blog Page:
 
  * Display a form with input boxes for Title, Author, Body
 
  * A button to submit the creation of the blog post
 
-* Edit Page:
+* Edit Blog Page:
 
   * Display a form with input boxes for Title, Author, Body
 
   * A button to submit the edit of the blog post
+
+* Edit Comment Page
+
+  * Display a form with input boxes for body, author
+
+  * A button to submit the edit of the comment.
 
 Take pictures of your mockups and check them into your repo.
 
