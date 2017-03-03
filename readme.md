@@ -2,7 +2,7 @@
 
 ![gBlog](gBlog.png)
 
-You and a partner will build a Full Stack app that allows users to CRUD blog posts.
+Build a Full Stack app that allows users to CRUD blog posts.
 
 <hr>
 # Wait!!!!
@@ -36,23 +36,23 @@ gBlog consists of the following relationships:
 
 ## 1. Think and Diagram FIRST
 
-Work with your partner to create an entity relationship diagram. Do not move on until you have agreed on a database structure.
+Create an entity relationship diagram. Do not move on until you have.
 
 ## 2. Project Setup
 
-* One team member should get the project directory setup (using the express generator, or from scratch using npm init, npm install etc.).
+* Get the project directory setup (using the express generator, or from scratch using npm init, npm install etc.).
 
-* The other team member should create a new repo on github and prepare it for the initial check in.
+* Create a new repo on github and prepare it for the initial check in.
 
 * Check in your code
 
-* Take pictures of your entity relationship diagrams and check them in.
+* Take pictures of the entity relationship diagrams and check them in.
 
 ## 3. Create the Database and Tables
 
-* Work together to create the database and tables using the entity relationship diagram you drew as a reference.
+* Work together to create the database and tables using the entity relationship diagram drawn as a reference.
 
-* You may use your preferred method for creating the database and tables (psql, pg or knex migrations).
+* You may use your preferred method for creating the database and tables (psql, pg, knex migrations, etc.).
 
 * Check in your code
 
@@ -61,8 +61,6 @@ Work with your partner to create an entity relationship diagram. Do not move on 
 * Create the CRUD routes for blog posts.
 
 * Your routes should only return json.
-
-* Take turns sage/scribe each route.
 
 * Make sure to test a route using postman or ajax requests before moving on to the next route.
 
@@ -73,8 +71,6 @@ Work with your partner to create an entity relationship diagram. Do not move on 
 * Create the CRUD routes for blog comments.
 
 * Your routes should only return json.
-
-* AGAIN, take turns sage/scribe each route.
 
 * Make sure to test a route using postman or ajax requests before moving on to the next route.
 
@@ -140,17 +136,25 @@ Take pictures of your mockups and check them into your repo.
 
 * Use bootstrap or another style framework of your choice. Plan ahead and use a grid system for your layout.
 
-* Use gulp to automate your build tasks.
-
-* As a team, focus on creating one page at a time, one team member should focus on layout/styles and the other team member should focus on ajax requests/DOM manipulation.
+* Focus on creating one page at a time, focus on layout/styles and then focus on ajax requests/DOM manipulation.
 
 * After you have finished a page, switch focus areas for the creation of the next page.
 
-* Communicate frequently and work efficiently.  
+* Work efficiently.  
 
 * Commit your code often.
 
-# Stretch
+## 8. Deploy to Heroku
+
+* Create a Heroku App
+
+* Provision a Postgres Database on your Heroku App
+
+* Make sure you are using Environment Variables to connect to the database.
+
+* Deploy early. Deploy often.
+
+# Stretch Tasks
 
 ## 1. User Authentication  
 
@@ -170,31 +174,7 @@ Take pictures of your mockups and check them into your repo.
 
 * You may use passport local strategy or role your own local strategy.
 
-## 2. Use a postgres DB hosted on heroku
-
-* Familiarize yourself with [how heroku works](https://devcenter.heroku.com/articles/how-heroku-works)
-
-* Follow the guide [here](https://devcenter.heroku.com/articles/heroku-postgresql) to create a DB on heroku.
-
-* Update your DB environment variable connection string to point to the heroku DB.
-
-* Run knex migrations or SQL files against the heroku DB to create the database schema.
-
-## 3. Deploy to Heroku
-
-* Follow [this](https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction) guide to familiarize yourself with the heroku toolbelt.
-
-* Be sure to create a [Procfile](https://devcenter.heroku.com/articles/procfile) in your app directory so heroku knows how to start your app
-
-```js
-web: node app.js
-```
-
-* You'll need to set your environment variables (cookie secret, DB connection string) on heroku. More on that [here](https://devcenter.heroku.com/articles/config-vars).
-
-* Deploy your site to heroku.
-
-## 4. Deploy to firebase
+## 2. Deploy to firebase
 
 * At this point your DB and express app are hosted together on heroku
 
@@ -212,13 +192,13 @@ web: node app.js
 
 * Remove the public folder from your heroku instance so that only the API is accessible.
 
-## 5. Drink a beer (or other appropriate beverage)
+## 3. Drink a beer (or other appropriate beverage)
 
 * YOU DID IT
 
 * YOU'RE A FULL STACK DEVELOPER
 
-* YOU HAVE CODE RUNNING ON 3 SEPARATE SERVERS ALL COMMUNICATING WITH EACH OTHER AND ACTUALLY WORKING
+* YOU HAVE CODE RUNNING ON 2 to 3 SEPARATE SERVERS ALL COMMUNICATING WITH EACH OTHER AND ACTUALLY WORKING
 
 * YOU ROCK!!!!!
 
