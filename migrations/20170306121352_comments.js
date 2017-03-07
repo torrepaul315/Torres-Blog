@@ -1,3 +1,6 @@
+//as per nick, I should prolly change the table fields to text (so the blog posts can be longer...can i just edit, then rollback and then rerun? )
+
+
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('comment', function(table){
   table.increments('id').primary();
