@@ -6,3 +6,31 @@ body {
 a {
   color: #00B7FF;
 }
+
+.blog-header {
+  background-color: black;
+  color: white;
+  font-style: helvetica;
+}
+
+.box {
+  border: 1px red solid;
+}
+
+.container {
+  max-width: 1000px;
+}
+
+.gblog {
+  max-width: 40%;
+  object-fit: contain;
+}
+.profile {
+  margin-right:30px;
+}
+
+.profile aside ul li{
+  float: left;
+  margin-right: 5px;
+  list-style: none;
+}
