@@ -18,9 +18,9 @@ function getUrlParameter(sParam) {
       method: 'GET',
       url: '/blogpost/' + returner,
     })
-    .then((data) => {
-      console.log(data)
-      // renderData(data);
+    .then((blogArray) => {
+      console.log(blogArray)
+      renderData(blogArray);
     })
     .catch((err) => {
       console.log(err)
@@ -41,11 +41,19 @@ getUrlParameter('id');
   // var movieArray
 });
 
-// function renderData(info) {
-//   console.log(info);
-//   $('.movie-title-edit').text(info.title);
-//   $('.director-edit').text(info.director);
-//   $('.year-edit').text(info.year);
-//   $('.my-rating-edit').text(info.rating);
-//   $('.poster-url-edit').attr("src",info.poster);
-// }
+function renderData(blogArray) {
+  const blogPost = blogArray[0];
+  console.log(blogPost);
+  console.log(blogPost.title);
+  console.log(blogPost.body);
+  // $('.blog-title').text(info.title);
+  // $('.director-edit').text(info.director);
+  // $('.year-edit').text(info.year);
+  // $('.my-rating-edit').text(info.rating);
+  // $('.poster-url-edit').attr("src",info.poster);
+
+var individualPost = `<article><header><h2>${blogPost.title}</h2></header>
+<footer>posted on:${blogPost.blogpost_timestamp}</footer><div class="lead">${blogPost.body}</div><a href='blog.html?id=${blogPost.id}'>Read More</a>`
+
+$('.bloglist').append($(individualPost));
+}
