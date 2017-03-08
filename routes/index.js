@@ -14,6 +14,14 @@ router.get('/blogpost', function(req, res, next) {
     res.send(blogpost);
   })
 });
+
+router.get('/blogpost/:id', (req, res, next) => {
+  knex('blogpost').where('id', req.params.id)
+  .then(blogpost => {
+    res.send(blogpost);
+  })
+})
+
 // have it set up, but probably won't need it!
 router.get('/user', (req,res,next) => {
   knex('user')
