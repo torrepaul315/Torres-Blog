@@ -1,3 +1,7 @@
+// need to- limit length of post to 3 sentences, and also insert the blog posts in chron order! 
+
+
+
 $(document).ready(function() {
   // alert('page has loaded');
   $.get('/blogpost')

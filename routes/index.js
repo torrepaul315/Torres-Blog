@@ -31,7 +31,12 @@ router.get('/user', (req,res,next) => {
   })
 })
 
-
+router.get('/user/:email', (req, res, next) => {
+  knex('user').where('email', req.params.email)
+  .then(user => {
+    res.send(user);
+  })
+})
 router.get('/comment', (req,res,next) => {
   knex('comment')
 
@@ -39,6 +44,15 @@ router.get('/comment', (req,res,next) => {
     res.send(comment);
   })
 })
+
+router.get('/comment/:id', (req,res,next) => {
+  knex('comment').where('blogpost_id', req.params.id)
+  .then(comments=> {
+    res.send(comments);
+  })
+})
+
+
 //remember! http POST localhost:8000/zebras name="fred" location="San diago" stripes:=8 if the data is a string ="" if an int, :=8
 //p 2 - as I go further down the road, leveraging the example of movie crud, should I refactor and prep that object outside of the routes page? A - could, but shouldn't need to
 
@@ -76,7 +90,6 @@ router.post('/blogpost', (req,res,next) => {
   body:req.body.body,
   user_email: req.body.user_email,
   } ,'id')
-
   })
   .then(id => {
     res.status(200).send(`something happened...${id}`)
@@ -86,6 +99,10 @@ router.post('/blogpost', (req,res,next) => {
   })
 })
 //figure out the post/patch/delete routes
+
+// router.put()
+
+
 
 //as per danny, this is another fairly complicated post request-
 //1- need to check if user exists (much like the blogpost post req) 2- you also need to check if the blogpost commented on exists!
@@ -101,10 +118,6 @@ router.post('/comment', (req,res,next) => {
         })
     }
   })
-  // .then(
-  //   return knex('blogpost').where()
-  // )
-
   .then(() => {
   return knex('comment').insert({
     body:req.body.body,
@@ -124,26 +137,44 @@ router.post('/comment', (req,res,next) => {
 /* will need
 router.put route to edit a blogpost,
 and a
-router.pus to edit a comment
-
+router.put to edit a comment
 */
 
-router.delete('/blogpost/:id', (req,res,next) => {
-  knex('blogpost').where('id', parseInt(req.params.id)).del()
-  // .then(() => {
-  //   //my attempt cj style commented out, wasn't working!
-  //   // res.redirect('/blogpost');
-  //   // res.send(knex('blogpost'))
-  //   //this was my default that works- res.status(204).send()
-  //   knex('blogpost')
-  // })
-  //  // res.render('index', { title: 'Express' });
-  //  .thenblogpost =>
-  //    res.send(blogpost);
-     .then(() => {
-       res.status(204).send()
-     })
+router.put('/blogpost/:id')
+
+
+router.put('/comment/:id', (req,res,next) => {
+  knex('comment').where('id', parseInt(req.params.id)).insert({
+  body:req.body.body,
+  user_email:req.body.user_email,
+  blogpost_id:req.body.blogpost_id,
+  title:req.body.title,
+  }).then(id => {
+    res.send(`something else happened ${id}`)
+  })
 })
+// table.increments('id').primary();
+// table.text('body');
+// table.timestamp('comment_timestamp').defaultTo(knex.fn.now());
+// table.string('user_email').references('email').inTable('user');
+// table.integer('blogpost_id').references('id').inTable('blogpost')
+// });
+
+router.delete('/blogpost/:id', (req,res,next) => {
+  knex('comment').where('blogpost_id', parseInt(req.params.id)).del()
+
+  .then(() => {
+  return knex('blogpost').where('id', parseInt(req.params.id)).del()
+  })
+  .then(() => {
+    res.status(204).send()
+  })
+  .catch(err => {
+    res.status(503).send(err.message)
+  })
+})
+
+
 
 router.delete('/comment/:id', (req,res,next) => {
   knex('comment').where('id',

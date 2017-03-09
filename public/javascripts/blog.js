@@ -1,9 +1,11 @@
 
-//so now we are getting the objec with the right data! just need to render it on the page!
+
+var returner
+
 function getUrlParameter(sParam) {
   const sPageURL = decodeURIComponent(window.location.search.substring(1));
   const sURLVariables = sPageURL.split('&');
-  var returner;
+  // var returner;
 
   sURLVariables.forEach((paraName) => {
     const sParameterName = paraName.split('=');
@@ -11,22 +13,31 @@ function getUrlParameter(sParam) {
       returner = sParameterName[1] === undefined ? false : sParameterName[1];
     }
   });
-  console.log('id:', returner);
+  // console.log('id:', returner);
 
+  renderComments(returner);
 
   $.ajax({
       method: 'GET',
       url: '/blogpost/' + returner,
     })
     .then((blogArray) => {
-      console.log(blogArray)
-      renderData(blogArray);
+      // renderData(blogArray);
+      var email = blogArray[0]['user_email']
+      $.ajax({
+        method: 'GET',
+        url: '/user/' + email,
+      })
+      .then((authorInfo) => {
+        console.log(authorInfo);
+        // renderAuthor(authorInfo)
+        renderData(blogArray, authorInfo);
+        ;
+      })
     })
     .catch((err) => {
       console.log(err)
     })
-
-
 // return returner;
 }
 
@@ -41,19 +52,155 @@ getUrlParameter('id');
   // var movieArray
 });
 
-function renderData(blogArray) {
+function renderData(blogArray,authorInfo) {
   const blogPost = blogArray[0];
-  console.log(blogPost);
-  console.log(blogPost.title);
-  console.log(blogPost.body);
-  // $('.blog-title').text(info.title);
-  // $('.director-edit').text(info.director);
-  // $('.year-edit').text(info.year);
-  // $('.my-rating-edit').text(info.rating);
-  // $('.poster-url-edit').attr("src",info.poster);
+  // console.log(blogPost);
+  // console.log(blogPost.title);
+  // console.log(blogPost.body);
+  var author = authorInfo[0]['name'];
+
 
 var individualPost = `<article><header><h2>${blogPost.title}</h2></header>
-<footer>posted on:${blogPost.blogpost_timestamp}</footer><div class="lead">${blogPost.body}</div><a href='blog.html?id=${blogPost.id}'>Read More</a>`
+<h4 class='author'>Written by: ${author}</h4>
+<footer>posted on:${blogPost.blogpost_timestamp}
+</footer>
+<div class="lead">${blogPost.body}</div>
+<button type="button" class="btn btn-primary edit"><a href='editBlog.html?id=${blogPost.id}'>Edit</a></button>
+<button type="button" class="btn btn-default delete"id='${blogPost.id}'>
+Delete</button>
 
+</article>
+`
 $('.bloglist').append($(individualPost));
+
+
+
+  console.log(author);
+
+
 }
+
+function renderComments(info) {
+  // console.log(info);
+    $.ajax({
+      method: 'GET',
+      url: '/comment/' + info,
+    })
+    .then((commentsObj) => {
+      console.log(commentsObj);
+      var comments = commentsObj[0]['body'];
+      // console.log(comments);
+      commentsObj.forEach((comment) => {
+//once functionality is there- create a better constructor where each comment is its own bootstrap row and the buttons are inputted into a column to the left of the comment!
+       var indivComment = `<article><header><h2>${comment['body']}</h2></header>
+       <button type="button" class="btn btn-primary edit"><a href='editComment.html?id=${comment.id}'>Edit</a></button>
+       <button type="button" class="btn btn-default deleteComment"id='${comment.id}'>
+       Delete</button>`
+
+       $('.commentlist').append($(indivComment));
+     })
+
+    }).catch((err) => {
+     console.log(err)
+  });
+}
+$(document).on('click', '.deleteComment', function (e){
+  // console.log('button works '+ returner);
+ e.preventDefault();
+
+})
+
+
+
+
+
+$(document).on('click', '.delete', function (e) {
+    //  console.log('button works '+ returner);
+    e.preventDefault();
+
+    $.ajax({
+      method: 'DELETE',
+      url: '/blogpost/' + returner,
+    })
+      .then((data) => {
+        console.log(data);
+
+      })
+      .catch((err) => {
+      console.log(err)
+      })
+});
+
+$('.commentAdd').on('click', (e) => {
+  e.preventDefault();
+  var newComment = {};
+  // does the object name matter?
+  newComment.name = $('.authorComment').val();
+  newComment.body = $('.commentAdd').val();
+  newComment.user_email = $('.emailComment').val();
+  newComment.blogpost_id = returner;
+  // newComment.blogpost_id
+  console.log(newComment.name, newComment.body, newComment.user_email, returner);
+
+  $.ajax({
+    method: 'POST',
+    url: '/comment',
+    data: newComment
+  })
+    .then((data) => {
+      console.log(data);
+
+    })
+    .catch((err) => {
+    console.log(err)
+    })
+
+
+})
+
+//how to get to the edit blog page with the right info- make use of the id extractor?
+// $(document).on('click', '.edit', function (e) {
+//     e.preventDefault();
+//      console.log('edit button works');
+    // var movie = $(this).closest(".movie-item");
+    // console.log(movie);
+    // var id = movie.attr('id');
+    // console.log(id);
+    // $.ajax({
+    //   method: 'GET',
+    //   url: '/movies/' + id
+    // })
+    // .then((response) => {
+    //   console.log(response);
+    //   //need to move to the edit page
+    //   location.replace('./edit.html')
+    //   //need to move to
+    //
+    //
+    //
+    //
+    // })
+    // .catch((err) => {
+    //   ALERT(err);
+    // })
+  // })
+  // $(document).on('click' , '.delete', function (e) {
+  //  console.log('button works ');
+  // e.preventDefault();
+  //
+  // var movie = $(this).closest(".movie-item");
+  // console.log(movie);
+  // var id = movie.attr('id');
+  // console.log(id);
+  // $.ajax({
+  //   method: 'DELETE',
+  //   url: '/movies/' + id
+  // })
+  //   .then((data) => {
+  //     console.log(data);
+  //       movie.remove()
+  //   })
+  //   .catch((err) => {
+  //   console.log(err)
+  //   })
+  // });

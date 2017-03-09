@@ -84,42 +84,62 @@ Create an entity relationship diagram. Do not move on until you have.
 
 * The website will consist of the following pages:
 
++ this equals my inserted tasks!
++ Nav Bar
+1- update nav bar across the website make
+2- make links work
+
 * Home page:
 
  * A list of all blog posts sorted by creation time and a 3 sentence excerpt from each.
+ + 2 steps remaining!
+ 1- only showing a 3 sentence excerpt
+ 2- sorting blog posts by timestamp(come back to this after you can create a blog post)
 
  * A link next to each blog post that will take you to the blog post's page.
-
+! done!
  * A link to create a new blog post
+! up, but move this link!
 
 * Blog page:
 
  * Display a single blog post. Should show Title, Author, Body and creation time.
+ ! done!
 
  * A link to edit the blog post.
+! done!
 
  * A link to delete the blog post.
+! done!
 
- * Below the blog post, display a form that will allow a user to add a comment.
+! done! * Below the blog post, display a form that will allow a user to add a comment.
 
- * Below the comment form, display all comments for the given blog post.
 
+!DONE! * Below the comment form, display all comments for the given blog post.
+
+
+these two will be dynamically generated like the blog list {
  * Next to each comment, display a link to delete the comment.
 
  * Next to each comment, display a link to edit the comment.
+}
+DONE! (except for wiping form after submission- look at galvanize personnel for this info!)
 
-* Create Blog Page:
+ ! done!* Create Blog Page:
 
  * Display a form with input boxes for Title, Author, Body
-
+! done!
  * A button to submit the creation of the blog post
+! done!
 
 * Edit Blog Page:
 
-  * Display a form with input boxes for Title, Author, Body
+! done!  * Display a form with input boxes for Title, Author, Body
+
 
   * A button to submit the edit of the blog post
 
+! yep! haven't figured out route yet!
 * Edit Comment Page
 
   * Display a form with input boxes for body, author
