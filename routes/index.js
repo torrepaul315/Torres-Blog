@@ -7,7 +7,7 @@ var knex = require('../db/knex');
 
 /* GET home page. */
 router.get('/blogpost', function(req, res, next) {
-   knex('blogpost')
+   knex('blogpost').orderBy('blogpost_timestamp')
 
   // res.render('index', { title: 'Express' });
   .then(blogpost => {
@@ -30,13 +30,14 @@ router.get('/user', (req,res,next) => {
     res.send(user);
   })
 })
-
+//how I pull in author info when I use multiple gets
 router.get('/user/:email', (req, res, next) => {
   knex('user').where('email', req.params.email)
   .then(user => {
     res.send(user);
   })
 })
+// get all comments
 router.get('/comment', (req,res,next) => {
   knex('comment')
 
@@ -44,13 +45,48 @@ router.get('/comment', (req,res,next) => {
     res.send(comment);
   })
 })
-
+//get comments tied to a blogpost
 router.get('/comment/:id', (req,res,next) => {
   knex('comment').where('blogpost_id', req.params.id)
-  .then(comments=> {
-    res.send(comments);
+  .then(comment=> {
+    res.send(comment);
+  })
+  .catch(err => {
+    res.status(503).send(err.message)
   })
 })
+//where you grab the info from when you're going to the edit comment page
+
+router.get('/comment/edit/:id', (req,res,next) => {
+  knex('comment').where('id', req.params.id)
+  .then(comment=> {
+    res.send(comment);
+  })
+  .catch(err => {
+    res.status(503).send(err.message)
+  })
+})
+//where I go out a and use a join to grab a comment AND the user email/name!
+
+router.get('/comment/join/:id', (req,res,next) => {
+  knex('comment')
+  .join('user', 'comment.user_email', '=','user.email')
+  .select('comment.body', 'user.name')
+  .where('id', req.params.id)
+  .then(joinTable => {
+    res.send(joinTable)
+  }).catch(err => {
+    res.status(503).send(err.message)
+  })
+})
+
+
+// knex('users')
+// .join('contacts', 'users.id', '=', 'contacts.user_id')
+// .select('users.id', 'contacts.phone')
+// Outputs:
+// select `users`.`id`, `contacts`.`phone` from `users` inner join `contacts` on `users`.`id` = `contacts`.`user_id`
+
 
 
 //remember! http POST localhost:8000/zebras name="fred" location="San diago" stripes:=8 if the data is a string ="" if an int, :=8
@@ -140,16 +176,20 @@ and a
 router.put to edit a comment
 */
 
-router.put('/blogpost/:id')
-
-
+router.put('/blogpost/:id', (req,res,next) => {
+  knex('blogpost').where('id', parseInt(req.params.id)).update({
+  title: req.body.title,
+  body: req.body.body,
+  }, 'id').then(id => {
+  res.send(`something else happened ${id}`)
+  });
+})
+//about this route...I'm rendering the body and author, but only really letting them edit the body? hmm
 router.put('/comment/:id', (req,res,next) => {
-  knex('comment').where('id', parseInt(req.params.id)).insert({
+  knex('comment').where('id', parseInt(req.params.id)).update({
   body:req.body.body,
-  user_email:req.body.user_email,
-  blogpost_id:req.body.blogpost_id,
-  title:req.body.title,
-  }).then(id => {
+
+}, 'id').then(id => {
     res.send(`something else happened ${id}`)
   })
 })

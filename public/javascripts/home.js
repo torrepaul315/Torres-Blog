@@ -1,4 +1,4 @@
-// need to- limit length of post to 3 sentences, and also insert the blog posts in chron order! 
+// need to- limit length of post to 3 sentences, and also insert the blog posts in chron order!
 
 
 
@@ -18,9 +18,13 @@ $(document).ready(function() {
  //as per jeff, add the index with the for each, so that each href in the generated list is unique! that way it loads the page with the additional info
 
      postInfo.forEach((blogPost, i) => {
-
+      var excerptArray = blogPost.body.match(/[^?!\.]+[?!\.]+/g);
+      var firstThree = excerptArray.slice(0,3);
+      var smoothedThree = firstThree[0].concat(firstThree[1],firstThree[2]);
+      // console.log(firstThree[1]);
+      // console.log(firstThree[2])
       var individualPost = `<article><header><h2>${blogPost.title}</h2></header>
-      <footer>posted on:${blogPost.blogpost_timestamp}</footer><div class="lead">${blogPost.body}</div><a href='blog.html?id=${blogPost.id}'>Read More</a>`
+      <footer>posted on:${blogPost.blogpost_timestamp}</footer><div class="lead">${smoothedThree}</div><a href='blog.html?id=${blogPost.id}'>Read More</a>`
 
 
       $('.bloglist').append($(individualPost));

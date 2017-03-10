@@ -89,6 +89,8 @@ Create an entity relationship diagram. Do not move on until you have.
 1- update nav bar across the website make
 2- make links work
 
+var excerptArray = blogPostBody.match(/[^?!\.]+[?!\.]+/g);
+
 * Home page:
 
  * A list of all blog posts sorted by creation time and a 3 sentence excerpt from each.
@@ -96,17 +98,16 @@ Create an entity relationship diagram. Do not move on until you have.
  1- only showing a 3 sentence excerpt
  2- sorting blog posts by timestamp(come back to this after you can create a blog post)
 
- * A link next to each blog post that will take you to the blog post's page.
+DONE! * A link next to each blog post that will take you to the blog post's page.
 ! done!
- * A link to create a new blog post
-! up, but move this link!
+DONE! * A link to create a new blog post
 
 * Blog page:
 
- * Display a single blog post. Should show Title, Author, Body and creation time.
- ! done!
+DONE! * Display a single blog post. Should show Title, Author, Body and creation time.
 
- * A link to edit the blog post.
+
+DONE! * A link to edit the blog post.
 ! done!
 
  * A link to delete the blog post.
@@ -118,11 +119,11 @@ Create an entity relationship diagram. Do not move on until you have.
 !DONE! * Below the comment form, display all comments for the given blog post.
 
 
-these two will be dynamically generated like the blog list {
- * Next to each comment, display a link to delete the comment.
 
- * Next to each comment, display a link to edit the comment.
-}
+!DONE! * Next to each comment, display a link to delete the comment.
+
+!DONE! * Next to each comment, display a link to edit the comment.
+
 DONE! (except for wiping form after submission- look at galvanize personnel for this info!)
 
  ! done!* Create Blog Page:
@@ -137,9 +138,9 @@ DONE! (except for wiping form after submission- look at galvanize personnel for 
 ! done!  * Display a form with input boxes for Title, Author, Body
 
 
-  * A button to submit the edit of the blog post
+DONE!  * A button to submit the edit of the blog post
 
-! yep! haven't figured out route yet!
+
 * Edit Comment Page
 
   * Display a form with input boxes for body, author

@@ -1,4 +1,11 @@
+/*
+stuff left to do:
+1- wipe the comment fields when a comment was submitted
+2- after wipe, insert the just added comment to the list of comments on the site
+3-styling!
+4- the blogpost space also submits when you click on it.....wtf!
 
+*/
 
 var returner
 
@@ -29,7 +36,7 @@ function getUrlParameter(sParam) {
         url: '/user/' + email,
       })
       .then((authorInfo) => {
-        console.log(authorInfo);
+        // console.log(authorInfo);
         // renderAuthor(authorInfo)
         renderData(blogArray, authorInfo);
         ;
@@ -58,11 +65,18 @@ function renderData(blogArray,authorInfo) {
   // console.log(blogPost.title);
   // console.log(blogPost.body);
   var author = authorInfo[0]['name'];
+  var date = blogPost.blogpost_timestamp.slice(0,10);
+
+  var time = blogPost.blogpost_timestamp.slice(11,16)
+
+  var scrubbedTime = date + " at " + time;
+  console.log(scrubbedTime);
+
 
 
 var individualPost = `<article><header><h2>${blogPost.title}</h2></header>
 <h4 class='author'>Written by: ${author}</h4>
-<footer>posted on:${blogPost.blogpost_timestamp}
+<footer>posted on: ${scrubbedTime}
 </footer>
 <div class="lead">${blogPost.body}</div>
 <button type="button" class="btn btn-primary edit"><a href='editBlog.html?id=${blogPost.id}'>Edit</a></button>
@@ -75,7 +89,7 @@ $('.bloglist').append($(individualPost));
 
 
 
-  console.log(author);
+  // console.log(author);
 
 
 }
@@ -87,7 +101,7 @@ function renderComments(info) {
       url: '/comment/' + info,
     })
     .then((commentsObj) => {
-      console.log(commentsObj);
+      // console.log(commentsObj);
       var comments = commentsObj[0]['body'];
       // console.log(comments);
       commentsObj.forEach((comment) => {
@@ -105,8 +119,19 @@ function renderComments(info) {
   });
 }
 $(document).on('click', '.deleteComment', function (e){
-  // console.log('button works '+ returner);
+  // console.log(this.id);
  e.preventDefault();
+ $.ajax({
+   method: 'DELETE',
+   url: '/comment/'+ this.id
+ })
+   .then((data) => {
+     console.log(data);
+
+   })
+   .catch((err) => {
+   console.log(err)
+   })
 
 })
 

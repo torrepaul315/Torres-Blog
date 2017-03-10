@@ -100,9 +100,9 @@ $('.submit').on('click', function (e) {
     // console.log(authorInfo.);
     console.log(blogPost.title);
     $.ajax({
-      url: '/movies/' + movieObject.id,
+      url: '/blogpost/' + returner,
       type: 'PUT',
-      data: editMovie
+      data: blogPost,
     })
     .then((data) => {
       console.log(data);
