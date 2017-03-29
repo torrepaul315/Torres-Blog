@@ -17,14 +17,25 @@ $(document).ready(function() {
    function renderPosts(postInfo) {
  //as per jeff, add the index with the for each, so that each href in the generated list is unique! that way it loads the page with the additional info
 
-     postInfo.forEach((blogPost, i) => {
+     var chronological = postInfo.reverse()
+     console.log(chronological);
+     chronological.forEach((blogPost, i) => {
       var excerptArray = blogPost.body.match(/[^?!\.]+[?!\.]+/g);
-      var firstThree = excerptArray.slice(0,3);
-      var smoothedThree = firstThree[0].concat(firstThree[1],firstThree[2]);
-      // console.log(firstThree[1]);
-      // console.log(firstThree[2])
-      var individualPost = `<article><header><h2>${blogPost.title}</h2></header>
-      <footer>posted on:${blogPost.blogpost_timestamp}</footer><div class="lead">${smoothedThree}</div><a href='blog.html?id=${blogPost.id}'>Read More</a>`
+      console.log(excerptArray);
+      var firstThreeSentences = excerptArray.slice(0,3);
+      console.log(firstThreeSentences);
+      var smoothedThree = firstThreeSentences[0].concat(firstThreeSentences[1],firstThreeSentences[2]);
+
+      var individualPost = `
+      <article>
+        <header>
+          <h2>${blogPost.title}</h2>
+        </header>
+        <footer>posted on:${blogPost.blogpost_timestamp}</footer>
+        <div class="lead">${smoothedThree}</div>
+        <a class='read-more'href='blog.html?id=${blogPost.id}'>Read More</a>
+      </article>
+      <hr>`
 
 
       $('.bloglist').append($(individualPost));

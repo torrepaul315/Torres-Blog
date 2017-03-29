@@ -7,7 +7,6 @@
 
 
 $('.submit').on('click', function (e) {
-     console.log('button works 2');
     e.preventDefault();
     var blogPost = {}
 
@@ -23,9 +22,8 @@ $('.submit').on('click', function (e) {
     })
     .then((data) => {
       console.log(data);
-    //this other way of doing things didn't work either! 
-      $('.newBlogPost').children('input').val('');
-
+    //this other way of doing things didn't work either!
+      window.location.href = 'index.html';
     })
     .catch((err) => {
     console.log(err)
