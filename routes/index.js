@@ -71,7 +71,7 @@ router.get('/comment/edit/:id', (req,res,next) => {
 router.get('/comment/join/:id', (req,res,next) => {
   knex('comment')
   .join('user', 'comment.user_email', '=','user.email')
-  .select('comment.body', 'user.name')
+  .select('*')
   .where('id', req.params.id)
   .then(joinTable => {
     res.send(joinTable)

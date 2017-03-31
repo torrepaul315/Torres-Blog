@@ -106,6 +106,7 @@ $('.submit').on('click', function (e) {
     })
     .then((data) => {
       console.log(data);
+      window.location='blog.html?id=' + returner;
     })
     .catch((err) => {
     console.log(err)

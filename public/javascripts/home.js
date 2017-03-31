@@ -20,6 +20,18 @@ $(document).ready(function() {
      var chronological = postInfo.reverse()
      console.log(chronological);
      chronological.forEach((blogPost, i) => {
+
+       var date = blogPost.blogpost_timestamp.slice(0,10);
+         console.log(date);
+         var time = blogPost.blogpost_timestamp.slice(11,16)
+         console.log(time);
+         var scrubbedTime = date + " at " + time;
+         console.log(scrubbedTime);
+
+
+
+
+
       var excerptArray = blogPost.body.match(/[^?!\.]+[?!\.]+/g);
       console.log(excerptArray);
       var firstThreeSentences = excerptArray.slice(0,3);
@@ -29,10 +41,10 @@ $(document).ready(function() {
       var individualPost = `
       <article>
         <header>
-          <h2>${blogPost.title}</h2>
+          <h1 class='bold'>${blogPost.title}</h1>
         </header>
-        <footer>posted on:${blogPost.blogpost_timestamp}</footer>
-        <div class="lead">${smoothedThree}</div>
+        <footer class='time'>posted on: ${scrubbedTime}</footer>
+        <div class="lead lighter">${smoothedThree}</div>
         <a class='read-more'href='blog.html?id=${blogPost.id}'>Read More</a>
       </article>
       <hr>`
